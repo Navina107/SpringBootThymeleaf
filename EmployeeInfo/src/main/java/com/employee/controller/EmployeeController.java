@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.emploee.model.Employee;
 import com.employee.service.EmployeeService;
@@ -65,18 +64,19 @@ public class EmployeeController {
 	/**
 	 * Give Model View
 	 */
-	@CrossOrigin(origins = "http://localhost:8500")
-	@RequestMapping(value ="/login",method = RequestMethod.GET)
+	/*@RequestMapping(value ="/login",method = RequestMethod.GET)
     public ModelAndView login() {
-       return new ModelAndView("user").addObject("userName", "Umaiyal");
-    }
+		//.addObject("userName", "Umaiyal");
+		System.out.println("umiyal");
+       return new ModelAndView("user");
+		
+    }*/
 	
-	
-	/*@CrossOrigin(origins = "http://localhost:8500")
+	@CrossOrigin(origins = "http://localhost:8500")
 	@RequestMapping(value ="/login",method = RequestMethod.GET)
     public String login() {
 		//.addObject("userName", "Umaiyal");
        return "<div>Hi Umaiyal!!..</div><div>Welcome to coats</div> ";
 		
-    }*/
+    }
 }
