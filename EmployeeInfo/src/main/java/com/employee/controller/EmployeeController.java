@@ -68,6 +68,7 @@ public class EmployeeController {
 	@CrossOrigin(origins = "http://localhost:8500")
 	@RequestMapping(value ="/login",method = RequestMethod.GET)
     public ModelAndView login() {
+		System.out.println("am called");
        return new ModelAndView("user").addObject("userName", "Umaiyal");
     }
 	

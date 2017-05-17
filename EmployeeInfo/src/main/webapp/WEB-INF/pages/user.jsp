@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p style="color:red; font-size:x-large">user ${userName}</p>
+	<p class="insert" style="color:red; font-size:x-large">user ${userName}</p>
 	<div>logged in</div>
 </body>
 </html>
