@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th='http://www.thymeleaf.org'>
+<html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-<!-- <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="/js/script.js" th:src="@{/js/script.js}"></script> -->
+ <title>Thyme Leaf</title>
 </head>
 <body>
-	<header th:replace='widget :: site-header'></header>
+	
 
-	<!-- 	<p class="reponseTemplate"
-		th:attr="onload=@{http://localhost:8090/login}"></p> -->
-	<p th:insert="http://localhost:8500/onloading :: div.onloading">
-	Welcome to the Spring MVC Quickstart application!
-            Get started quickly by signing up.
-	</p>
-	<p th:insert="http://www.thymeleaf.org :: section.description">
-	Welcome to the Spring MVC Quickstart application!
-            Get started quickly by signing up.
-	</p>
-	<p th:insert="http://localhost:8090/login :: p.insert"></p>
+	
+<div class="container">
+    <div class="text-center">
+        
+        <h1>Thymeleaf Layouts</h1>
+        
+         <div class="lead" th:insert="http://www.thymeleaf.org :: section.description">
+            !!!!!!!!!!!!!!!!!!!!!.
+        </div> 
+        
+        <div th:insert="http://localhost:8500/onloading :: div.onloading">
+         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        </div>
+        
+        <p>
+            <a id="signup" class="btn btn-success btn-lg">Sign up</a>
+        </p>
+    </div>
+    
+</div>
+	
 
-	<p>We manufacture the world's threads and yarns for over 250 years
-		we've helped to connect and form the fabric of daily life on our plane</p>
-	<p>As firefighters go about their work our performance threads and
-		zips offer heat and flame protection at temperatures up to 370C</p>
-
-	<footer th:replace='widget :: site-footer'></footer>
 </body>
 </html>

@@ -10,6 +10,8 @@ public class WebController {
 	@RequestMapping(value ="/onloading",method = RequestMethod.GET)
     public String login() {
 		//.addObject("userName", "Umaiyal");
+		System.out.println("inside on Loadings");
+		
        return "<div class='onloading'>Hello Umaiyal!!..</div><div>Welcome to coats</div> ";
 		
     }
