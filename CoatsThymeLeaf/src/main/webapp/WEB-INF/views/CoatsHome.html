@@ -10,10 +10,16 @@
 
 	<!-- 	<p class="reponseTemplate"
 		th:attr="onload=@{http://localhost:8090/login}"></p> -->
-
-	<p th:insert="http://www.thymeleaf.org :: section.description"></p>
+	<p th:insert="http://localhost:8500/onloading :: div.onloading">
+	Welcome to the Spring MVC Quickstart application!
+            Get started quickly by signing up.
+	</p>
+	<p th:insert="http://www.thymeleaf.org :: section.description">
+	Welcome to the Spring MVC Quickstart application!
+            Get started quickly by signing up.
+	</p>
 	<p th:insert="http://localhost:8090/login :: p.insert"></p>
-	
+
 	<p>We manufacture the world's threads and yarns for over 250 years
 		we've helped to connect and form the fabric of daily life on our plane</p>
 	<p>As firefighters go about their work our performance threads and
