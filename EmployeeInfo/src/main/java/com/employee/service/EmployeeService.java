@@ -1,11 +1,9 @@
 package com.employee.service;
 
 import java.util.Hashtable;
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
-import com.emploee.model.Employee;
+import com.employee.model.Employee;
 
 @Service
 public class EmployeeService {
@@ -19,12 +17,20 @@ public class EmployeeService {
 		employeeData.put(employee.getId(),employee);
 	}
 
-	 /** Returns the employee details
+
+	/** Returns the employee details
 	 * @return HashTable<String,Employee> employeeData
 	 */
 	public Hashtable<String,Employee> retriveEmployeeDetails(){
 		return employeeData;
 
+	}
+
+	/** Returns the employee detail provided employee id
+	 * @return HashTable<String,Employee> employeeData
+	 */
+	public Employee retriveEmployeeDetailsById(String employeeId) {
+		return employeeData.get(employeeId);
 	}
 
 	/** Adds new employee data
@@ -33,12 +39,10 @@ public class EmployeeService {
 	 */
 	public String createEmployeeDetails(Employee employee){
 		try{
-			if(employee != null){
-				employeeData.put(employee.getId(), employee);
-			}
+			employeeData.put(employee.getId(), employee);
 			return "Employee data created for::"+employee.getName();
 		}
-		catch (NullPointerException exception) {
+		catch (Exception exception) {
 			return "Employee data with null id cannot be created";
 		}
 
@@ -49,24 +53,10 @@ public class EmployeeService {
 	 * @return String message
 	 */
 	public String deleteEmployeeDetail(String employeeId){
-		String message = "";
-		boolean employeeIdFound = false;
-		if(employeeId != null ){
-			for(Map.Entry<String, Employee> entry:employeeData.entrySet()){    
-				if(entry.getKey().equals(employeeId)){
-					employeeData.remove(employeeId);
-					employeeIdFound = true;
-					message = "Employee data deleted";
-					break;
-				}
-			} 
-			
-			if(!employeeIdFound){
-				message = "Employee Id not found";
-			} 
+		if(employeeId != null){
+			employeeData.remove(employeeId);
 		}
-		return message;
-		
+		return "Employee deleted";
 	}
 
 
@@ -76,26 +66,12 @@ public class EmployeeService {
 	 * @return String status
 	 */
 	public String updateEmployeeDetails(Employee employee,String employeeId){
-		String status = "";
-		boolean isUpdated = false;
+
 		if(employee != null && employeeId != null){
-			for(Map.Entry<String, Employee> entry:employeeData.entrySet()){    
-				if(entry.getKey().equalsIgnoreCase(employeeId)){
-					entry.setValue(employee);
-					isUpdated = true;
-					status = "Employee data updated for"+employee.getName();
-					break;
-				}
+			employeeData.put(employeeId, employee);
 
-			}   
-			if(!isUpdated){
-				status = "Employee Id does not exist in Employee details";
-			}
 		}
-		
-		return status;
+		return "employee data updated";
 	}
-
-
 
 }
