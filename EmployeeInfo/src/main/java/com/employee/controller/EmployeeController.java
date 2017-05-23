@@ -1,6 +1,10 @@
+
+
 package com.employee.controller;
 
 import java.util.Hashtable;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +27,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
-	
+
 	/**
 	 * retriveEmployeeData : Method returns all the employee details
 	 */
@@ -42,7 +46,7 @@ public class EmployeeController {
 		return employeeService.retriveEmployeeDetailsById(employeeId);
 
 	}
-	
+
 	/**
 	 * createEmployeeData : Method adds new employee data
 	 */
@@ -51,7 +55,7 @@ public class EmployeeController {
 		return employeeService.createEmployeeDetails(employee);
 	}
 
-	
+
 	/**
 	 * updateEmployeeData : Method updates the existing employee's data
 	 */
@@ -60,7 +64,7 @@ public class EmployeeController {
 		return employeeService.updateEmployeeDetails(employee,employeeId);
 	}
 
-	
+
 	/**
 	 * deleteEmployeeData : Method deletes employee detail
 	 */
@@ -74,18 +78,26 @@ public class EmployeeController {
 	 */
 	@CrossOrigin(origins = "http://localhost:8500")
 	@RequestMapping(value ="/login",method = RequestMethod.GET)
-    public ModelAndView login() {
+	public ModelAndView login() {
 		System.out.println("am called");
-       return new ModelAndView("user").addObject("userName", "Umaiyal");
-		
+		return new ModelAndView("user").addObject("userName", "Umaiyal");
+
+	}
+
+
+	@RequestMapping(value = { "/version" })
+	public String getVersion() {
+		return "1.0";
+	}
+	
+	@RequestMapping(method = { RequestMethod.GET }, value = { "/hello" })
+    public String sayHello(HttpServletResponse response) {
+        return "hello";
     }
-	
-	
-	/*@CrossOrigin(origins = "http://localhost:8500")
-	@RequestMapping(value ="/login",method = RequestMethod.GET)
-    public String login() {
-		//.addObject("userName", "Umaiyal");
-       return "<div>Hi Umaiyal!!..</div><div>Welcome to coats</div> ";
-		
-    }*/
+
+    @RequestMapping(method = { RequestMethod.POST }, value = { "/baeldung" })
+    public String sayHelloPost(HttpServletResponse response) {
+        return "hello";
+    }
+
 }
