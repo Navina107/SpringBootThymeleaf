@@ -1,0 +1,4 @@
+security:
+      basic:
+            enabled: false
+server.port: 3099
