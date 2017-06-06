@@ -1,4 +1,4 @@
-package com.coats.trims.meta.springBootSeed;
+package com.coats.d2.auth.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
