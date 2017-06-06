@@ -1,4 +1,4 @@
-package com.coats.trims.meta.springBootSeed;
+package com.coats.d2.auth.api.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

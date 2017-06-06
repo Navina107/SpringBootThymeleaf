@@ -1,4 +1,4 @@
-package com.coats.trims.meta.springBootSeed;
+package com.coats.d2.auth.api.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.auth0.NonceUtils;
+import com.coats.d2.auth.api.config.AppConfig;
 
 @Controller
 public class SpringBootAppController{

@@ -1,4 +1,4 @@
-package com.coats.trims.meta.springBootSeed;
+package com.coats.d2.auth.api.controller;
 import java.security.Principal;
 import java.util.Map;
 
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.auth0.Auth0User;
 import com.auth0.SessionUtils;
+import com.coats.d2.auth.api.config.AppConfig;
 @Controller
 public class HomeController {
 

@@ -1,4 +1,4 @@
-package com.coats.trims.meta.springBootSeed;
+package com.coats.d2.auth.api.controller;
 import com.auth0.web.Auth0CallbackHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
