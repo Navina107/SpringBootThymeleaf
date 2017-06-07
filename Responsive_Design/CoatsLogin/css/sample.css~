@@ -1,0 +1,29 @@
+body{
+	background: #d2d4d3;
+}
+body, .btn {
+	font-family: Arial, helvetica, verdana, sans-serif;
+	font-size: 12px;
+}
+a{
+	color: #135994;
+}
+
+.navbar-header
+{
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
+
+.navbar-header >a > span
+{
+    font-size: 26px;
+    color: #135994;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+.navbar-header >a > img
+{
+	 margin-left: 15px;
+}

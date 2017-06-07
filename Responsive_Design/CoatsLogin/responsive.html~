@@ -1,0 +1,72 @@
+<html lang="en"><head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/sample.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="headerContainer">
+        <div class="navbar-header">
+            <a href="index.html"><img src="images/coatsplc_logo.svg" alt="Coats logo" height="50" width="50" class="coats-logo"> <span>Coats.com</span></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            
+        </div>
+    </div>
+</nav>
+<div style="
+    padding-top: 59px;
+    padding-bottom: 30px;
+    background-image: url(images/responsiveBackground.jpg);
+    background-repeat: no-repeat;
+"> <div class="container" style="
+    width: 400px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.80);
+    padding: 15px;
+    margin-top: 40px;
+">
+  <div class="login-header">
+                        <div class="coatslogo" style="
+    text-align: center;
+"><img src="images/coatsplc_logo.svg" alt="Coats logo" height="50" width="50" class="coats-logo" style="
+    width: 154px;
+    height: 64px;
+    align: center;
+"></div>
+			<h3 style="
+    text-align: center;
+">Coats Sign On</h3>
+                                           </div>
+  
+  <form role="form" style="
+    max-width: 150px;
+">
+    <div class="form-group">
+      
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="checkbox">
+      
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+</div>
+
+
+
+
+
+</body></html>
