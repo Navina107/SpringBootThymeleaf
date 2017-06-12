@@ -1,0 +1,18 @@
+2017/06/11 23:27:11 [notice] 5604#1648: signal process started
+2017/06/11 23:27:36 [notice] 5688#4136: signal process started
+2017/06/11 23:33:54 [error] 1796#3108: *1 CreateFile() "C:\nginx-1.13.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2017/06/11 23:35:54 [notice] 436#1356: signal process started
+2017/06/11 23:43:01 [warn] 1284#5460: "user" is not supported, ignored in C:\nginx-1.13.1/conf/nginx.conf:1
+2017/06/11 23:43:01 [emerg] 1284#5460: CreateFile() "C:/var/log/nginx/access.log" failed (3: The system cannot find the path specified)
+2017/06/11 23:43:14 [error] 3352#4940: *11 CreateFile() "C:\nginx-1.13.1/html/footer" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /footer HTTP/1.1", host: "localhost"
+2017/06/11 23:43:23 [warn] 2328#1532: "user" is not supported, ignored in C:\nginx-1.13.1/conf/nginx.conf:1
+2017/06/11 23:43:23 [notice] 2328#1532: signal process started
+2017/06/12 06:18:18 [error] 4200#5412: *1 CreateFile() "C:\nginx-1.13.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2017/06/12 07:30:04 [emerg] 5720#1684: "proxy_pass" cannot have URI part in location given by regular expression, or inside named location, or inside "if" statement, or inside "limit_except" block in C:\nginx-1.13.1/conf/nginx.conf:53
+2017/06/12 07:30:14 [emerg] 4932#6000: "proxy_pass" cannot have URI part in location given by regular expression, or inside named location, or inside "if" statement, or inside "limit_except" block in C:\nginx-1.13.1/conf/nginx.conf:53
+2017/06/12 07:31:31 [emerg] 6372#6376: "proxy_pass" cannot have URI part in location given by regular expression, or inside named location, or inside "if" statement, or inside "limit_except" block in C:\nginx-1.13.1/conf/nginx.conf:53
+2017/06/12 07:31:44 [emerg] 6424#6428: "proxy_pass" cannot have URI part in location given by regular expression, or inside named location, or inside "if" statement, or inside "limit_except" block in C:\nginx-1.13.1/conf/nginx.conf:53
+2017/06/12 07:32:12 [notice] 6724#6728: signal process started
+2017/06/12 07:32:39 [error] 6780#6804: *1 CreateFile() "C:\nginx-1.13.1/html/CoatsHome.html" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", subrequest: "/CoatsHome.html", host: "localhost:8080"
+2017/06/12 07:32:39 [error] 6780#6804: *1 CreateFile() "C:\nginx-1.13.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/"
+2017/06/12 07:38:17 [error] 6780#6804: *4 CreateFile() "C:\nginx-1.13.1/html/CoatsHome.html" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", subrequest: "/CoatsHome.html", host: "localhost:8080"
