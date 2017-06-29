@@ -2,20 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Thyme Leaf</title>
+<style th:inline="text">
+input::-webkit-calendar-picker-indicator {
+	display: none;
+}
+</style>
 </head>
 <body>
 
 	<header th:replace='widget :: site-header'></header>
-
 	<div class="container">
 		<div class="text-center">
 
 			<h1>Thymeleaf Layouts</h1>
 
-			<div class="lead"
-				th:insert="http://www.thymeleaf.org :: section.description"></div>
 
-			<div th:insert="http://localhost:8090/login"></div>
+			<form>
+				<input type="text" id="ajax" list="json-datalist" placeholder="NAME">
+				<datalist id="json-datalist"></datalist>
+			</form>
 
 			<p>
 				<a id="signup" class="btn btn-success btn-lg">Sign up</a>
@@ -23,7 +28,71 @@
 		</div>
 
 	</div>
-	<footer th:replace='widget :: site-footer'></footer>
 
+	<footer th:replace='widget :: site-footer'></footer>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+		var itemArray = new Array();
+		$("input#ajax")
+				.on(
+						"keyup",
+						function(event) {
+							if (this.value.length == 3) {
+								var dataList = document
+										.getElementById('json-datalist');
+								var input = document.getElementById('ajax');
+
+								// Create a new XMLHttpRequest.
+								var request = new XMLHttpRequest();
+								// Handle state changes for the request.
+								request.onreadystatechange = function(response) {
+									if (request.readyState === 4) {
+										if (request.status === 200) {
+											// Parse the JSON
+											var jsonOptions = JSON
+													.parse(request.responseText);
+
+											// Loop over the JSON array.
+											jsonOptions
+													.forEach(function(item) {
+														if (jQuery
+																.inArray(item,
+																		itemArray) == -1) {
+															// Create a new <option> element.
+															var option = document
+																	.createElement('option');
+															// Set the value using the item in the JSON array.
+															itemArray
+																	.push(item);
+
+															option.value = item;
+															// Add the <option> element to the <datalist>.
+															dataList
+																	.appendChild(option);
+
+														}
+
+													});
+
+											// Update the placeholder text.
+											input.placeholder = "NAME";
+										} else {
+											// An error occured :(
+											input.placeholder = "Couldn't load datalist options :(";
+										}
+									}
+								};
+								// Update the placeholder text.
+								input.placeholder = "Loading options...";
+
+								// Set up and make the request.
+								request.open('GET',
+										'http://localhost:8090/jsonData', true);
+								request.send();
+							}
+
+						});
+	</script>
 </body>
 </html>
