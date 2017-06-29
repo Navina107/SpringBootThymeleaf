@@ -62,6 +62,8 @@ input::-webkit-calendar-picker-indicator {
 											                this.element(element);
 											            }
 											        },
+											        
+											        onfocusout: function(element) { $(element).valid(); },
 												// Specify validation rules
 												rules : {
 													// The key name on the left side is the name attribute
