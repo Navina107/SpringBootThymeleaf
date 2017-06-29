@@ -2,7 +2,9 @@
 
 package com.employee.controller;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,9 +33,23 @@ public class EmployeeController {
 	/**
 	 * retriveEmployeeData : Method returns all the employee details
 	 */
+	@CrossOrigin(origins = "http://localhost:8500")
 	@RequestMapping(value = "/employee")
 	public Hashtable<String,Employee> retriveEmployeeData(){
 		return employeeService.retriveEmployeeDetails();
+
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8500")
+	@RequestMapping(value = "/jsonData")
+	public List<String> jsonData(){
+		 ArrayList<String> list=new ArrayList<String>();//Creating arraylist  
+		  list.add("bangalore");//Adding object in arraylist  
+		  list.add("bangladesh");  
+		  list.add("singapore");  
+		  list.add("mysore");  
+		  list.add("chennai"); 
+		  return list;
 
 	}
 
