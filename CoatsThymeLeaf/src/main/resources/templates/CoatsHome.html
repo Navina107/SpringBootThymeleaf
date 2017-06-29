@@ -18,14 +18,14 @@ input::-webkit-calendar-picker-indicator {
 
 
 			<form name="registration">
-				<label for="firstname">Name</label> <input type="text" id="ajax"
+				<label for="firstname">Name</label> <input type="text" id="ajax" name="name"
 					list="json-datalist" placeholder="NAME">
 				<datalist id="json-datalist"></datalist>
-				<br /> <br /> <label for="firstname">First Name</label> <input
+				<br /> <br /> <!-- <label for="firstname">First Name</label> <input
 					type="text" name="firstname" id="firstname" placeholder="John" />
 				<br /> <br /> <label for="lastname">Last Name</label> <input
 					type="text" name="lastname" id="lastname" placeholder="Doe" /> <br />
-				<br /> <label for="email">Email</label> <input type="email"
+				<br /> --> <label for="email">Email</label> <input type="email"
 					name="email" id="email" placeholder="john@doe.com" /> <br /> <br />
 				<label for="password">Password</label> <input type="password"
 					name="password" id="password"
@@ -60,8 +60,7 @@ input::-webkit-calendar-picker-indicator {
 													// The key name on the left side is the name attribute
 													// of an input field. Validation rules are defined
 													// on the right side
-													firstname : "required",
-													lastname : "required",
+													name : "required",
 													email : {
 														required : true,
 														// Specify that email should be validated
