@@ -1,119 +1,94 @@
+package com.employee.service;
 
-
-package com.employee.controller;
-
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import com.employee.model.Employee;
-import com.employee.service.EmployeeService;
 
-/**
- *  @ File Name : EmployeeController.java
- *  @ Description : Rest controller with CRUD end-points
- */
-@RestController
-public class EmployeeController {
+@Service
+public class EmployeeService {
 
-	@Autowired
-	private EmployeeService employeeService;
+	Hashtable<String,Employee> employeeData = new Hashtable<String,Employee>(); 
+
+	public EmployeeService() {
+		Employee employee = new Employee("112244","Ananya",24,"Sr Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113388","Balu",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113385","umayal",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113385","umaneesh",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113387","Akash",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113380","kavya",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113389","kavin",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+	}
 
 
-	/**
-	 * retriveEmployeeData : Method returns all the employee details
+	/** Returns the employee details
+	 * @return HashTable<String,Employee> employeeData
 	 */
-	@CrossOrigin(origins = "http://localhost:8500")
-	@RequestMapping(value = "/employee")
-	public Hashtable<String,Employee> retriveEmployeeData(){
-		return employeeService.retriveEmployeeDetails();
-
-	}
-	
-	@CrossOrigin(origins = "http://localhost:8500")
-	@RequestMapping(value = "/jsonData")
-	public List<String> jsonData(){
-		 ArrayList<String> list=new ArrayList<String>();//Creating arraylist  
-		  list.add("bangalore");//Adding object in arraylist  
-		  list.add("bangladesh");  
-		  list.add("singapore");  
-		  list.add("mysore");  
-		  list.add("chennai"); 
-		  return list;
+	public Hashtable<String,Employee> retriveEmployeeDetails(){
+		return employeeData;
 
 	}
 
-
-	/**
-	 * retriveEmployeeDataById : Method gets employee detail by taking an employeeId
+	/** Returns the employee detail provided employee id
+	 * @return HashTable<String,Employee> employeeData
 	 */
-	@RequestMapping(value = "/employee/{employeeId}")
-	public Employee retriveEmployeeDataById(@PathVariable String employeeId){
-		return employeeService.retriveEmployeeDetailsById(employeeId);
-
+	public Employee retriveEmployeeDetailsById(String employeeId) {
+		return employeeData.get(employeeId);
 	}
 
-	/**
-	 * createEmployeeData : Method adds new employee data
+	/** Adds new employee data
+	 * @param employee
+	 * @return String
 	 */
-	@RequestMapping( method = RequestMethod.POST,value = "/employee")
-	public String createEmployeeData(@RequestBody Employee employee){
-		return employeeService.createEmployeeDetails(employee);
+	public String createEmployeeDetails(Employee employee){
+		try{
+			employeeData.put(employee.getId(), employee);
+			return "Employee data created for::"+employee.getName();
+		}
+		catch (Exception exception) {
+			return "Employee data with null id cannot be created";
+		}
+
 	}
 
-
-	/**
-	 * updateEmployeeData : Method updates the existing employee's data
+	/** Deletes employee detail
+	 * @param employeeId
+	 * @return String message
 	 */
-	@RequestMapping(method = RequestMethod.PUT,value = "/employee/{employeeId}")
-	public String updateEmployeeData(@RequestBody Employee employee,@PathVariable String employeeId ){
-		return employeeService.updateEmployeeDetails(employee,employeeId);
+	public String deleteEmployeeDetail(String employeeId){
+		if(employeeId != null){
+			employeeData.remove(employeeId);
+		}
+		return "Employee deleted";
 	}
 
 
-	/**
-	 * deleteEmployeeData : Method deletes employee detail
+	/** Updates employee detail by fetching the employee id
+	 * @param employeeId
+	 * @param employee
+	 * @return String status
 	 */
-	@RequestMapping(method = RequestMethod.DELETE,value = "/employee/{employeeId}")
-	public String deleteEmployeeData(@PathVariable String employeeId ){
-		return employeeService.deleteEmployeeDetail(employeeId);
+	public String updateEmployeeDetails(Employee employee,String employeeId){
+
+		if(employee != null && employeeId != null){
+			employeeData.put(employeeId, employee);
+
+		}
+		return "employee data updated";
 	}
-
-	/**
-	 * Give Model and View
-	 */
-	@CrossOrigin(origins = "http://localhost:8500")
-	@RequestMapping(value ="/login",method = RequestMethod.GET)
-	public ModelAndView login() {
-		System.out.println("am called");
-		return new ModelAndView("user").addObject("userName", "Umaiyal");
-
-	}
-
-
-	@RequestMapping(value = { "/version" })
-	public String getVersion() {
-		return "1.0";
-	}
-	
-	@RequestMapping(method = { RequestMethod.GET }, value = { "/hello" })
-    public String sayHello(HttpServletResponse response) {
-        return "hello";
-    }
-
-    @RequestMapping(method = { RequestMethod.POST }, value = { "/baeldung" })
-    public String sayHelloPost(HttpServletResponse response) {
-        return "hello";
-    }
 
 }
