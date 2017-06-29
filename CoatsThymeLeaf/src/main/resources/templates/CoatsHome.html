@@ -55,6 +55,13 @@ input::-webkit-calendar-picker-indicator {
 							$("form[name='registration']")
 									.validate(
 											{
+												 onkeyup: function (element, event) {
+											            if (this.elementValue(element) === "") {
+											                return;
+											            } else {
+											                this.element(element);
+											            }
+											        },
 												// Specify validation rules
 												rules : {
 													// The key name on the left side is the name attribute
