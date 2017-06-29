@@ -33,66 +33,38 @@ input::-webkit-calendar-picker-indicator {
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" th:inline="javascript">
-		var itemArray = new Array();
-		$("input#ajax")
-				.on(
-						"keyup",
-						function(event) {
-							if (this.value.length == 3) {
-								var dataList = document
-										.getElementById('json-datalist');
-								var input = document.getElementById('ajax');
+		$(document).ready(function() {
+			var jsonResponse;
+			var itemArray = new Array();
+			$.ajax({
+				type : 'GET',
+				url : 'http://localhost:8090/employee',
+				dataType : 'json',
+				success : function(data) {
+					jsonResponse = data;
+				}
+			});
 
-								// Create a new XMLHttpRequest.
-								var request = new XMLHttpRequest();
-								// Handle state changes for the request.
-								request.onreadystatechange = function(response) {
-									if (request.readyState === 4) {
-										if (request.status === 200) {
-											// Parse the JSON
-											var jsonOptions = JSON
-													.parse(request.responseText);
+			/* drop down on keyup*/
+			$("input#ajax").on("keyup", function(event) {
+				if (this.value.length == 3) {
+					var dataList = document.getElementById('json-datalist');
+					$.each(jsonResponse, function(index, element) {
+						if (jQuery.inArray(element.name, itemArray) == -1) {
+							// Create a new <option> element.
+							var option = document.createElement('option');
+							// Set the value using the item in the JSON array.
+							itemArray.push(element.name);
+							option.value = element.name;
+							// Add the <option> element to the <datalist>.
+							dataList.appendChild(option);
+							
+						}
+					});
+				}
+			});
 
-											// Loop over the JSON array.
-											jsonOptions
-													.forEach(function(item) {
-														if (jQuery
-																.inArray(item,
-																		itemArray) == -1) {
-															// Create a new <option> element.
-															var option = document
-																	.createElement('option');
-															// Set the value using the item in the JSON array.
-															itemArray
-																	.push(item);
-
-															option.value = item;
-															// Add the <option> element to the <datalist>.
-															dataList
-																	.appendChild(option);
-
-														}
-
-													});
-
-											// Update the placeholder text.
-											input.placeholder = "NAME";
-										} else {
-											// An error occured :(
-											input.placeholder = "Couldn't load datalist options :(";
-										}
-									}
-								};
-								// Update the placeholder text.
-								input.placeholder = "Loading options...";
-
-								// Set up and make the request.
-								request.open('GET',
-										'http://localhost:8090/jsonData', true);
-								request.send();
-							}
-
-						});
+		});
 	</script>
 </body>
 </html>
