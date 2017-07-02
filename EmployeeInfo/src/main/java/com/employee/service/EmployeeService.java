@@ -13,8 +13,25 @@ public class EmployeeService {
 	public EmployeeService() {
 		Employee employee = new Employee("112244","Ananya",24,"Sr Analyst",3200000);
 		employeeData.put(employee.getId(),employee);
+		
 		employee = new Employee("113388","Balu",22,"Analyst",3200000);
 		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113385","umayal",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113385","umaneesh",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113387","Akash",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113380","kavya",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
+		employee = new Employee("113389","kavin",22,"Analyst",3200000);
+		employeeData.put(employee.getId(),employee);
+		
 	}
 
 
