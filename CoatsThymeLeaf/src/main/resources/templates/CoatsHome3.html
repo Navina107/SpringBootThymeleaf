@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyme Leaf</title>
+<style th:inline="text">
+input::-webkit-calendar-picker-indicator {
+	display: none;
+}
+</style>
+
+<link rel="stylesheet" type="text/css"
+	href="/static/css/jquery.typeahead.css"
+	th:href="@{/css/jquery.typeahead.css}" />
+</head>
+<body>
+
+	<header th:replace='widget :: site-header'></header>
+	<div class="container">
+		<div class="text-center">
+
+			<h1>Thymeleaf Layouts</h1>
+
+			<form id="form-beer_v1" name="form-beer_v1">
+				<div class="typeahead__container">
+					<div class="typeahead__field">
+
+						<!-- <span class="typeahead__query"> <input
+							class="js-typeahead-beer_v1" name="beer_v1[query]" type="search"
+							placeholder="Search" autocomplete="off"> -->
+						</span> <span class="typeahead__button">
+							<button type="submit">
+								<i class="typeahead__search-icon"></i>
+							</button>
+						</span>
+
+					</div>
+				</div>
+			</form>
+
+			<p>
+				<a id="signup" class="btn btn-success btn-lg">Sign up</a>
+			</p>
+		</div>
+
+	</div>
+
+	<footer th:replace='widget :: site-footer'></footer>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/static/js/jquery.typeahead.js"
+		th:src="@{/js/jquery.typeahead.js}"></script>
+	<script type="text/javascript" th:inline="javascript">
+	$.typeahead({
+	    input: '.js-typeahead-beer_v1',
+	    minLength: 1,
+	    maxItem: 15,
+	    order: "asc",
+	    hint: true,
+	    backdrop: {
+	        "background-color": "#fff"
+	    },
+	    source: {
+	            ajax: {
+	                url: "http://localhost:8090/employee"
+	            }
+	    },
+	    debug: true
+	});
+	
+	
+	</script>
+
+</body>
+</html>

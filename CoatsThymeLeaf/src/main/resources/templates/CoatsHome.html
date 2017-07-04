@@ -3,146 +3,60 @@
 <head>
 <title>Thyme Leaf</title>
 <style th:inline="text">
-input::-webkit-calendar-picker-indicator {
-	display: none;
+.errorClass {
+	color:red;
 }
 </style>
 </head>
 <body>
 
-	<header th:replace='widget :: site-header'></header>
-	<div class="container">
-		<div class="text-center">
+	<h1>User Form</h1>
 
-			<h1>Thymeleaf Layouts</h1>
+	<form action="#" th:action="@{/formData}" th:object="${coatsEmployee}"
+		method="post">
+		<table>
+			<tr>
+				<td>id:</td>
+				<td><input type="text" th:field="*{employeeId}" /></td>
+				<td th:class="errorClass" th:if="${#fields.hasErrors('employeeId')}"
+					th:errors="*{employeeId}">ID Error</td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" th:field="*{employeeName}" /></td>
+				<td th:class="errorClass" th:if="${#fields.hasErrors('employeeName')}"
+					th:errors="*{employeeName}">Name Error</td>
+			</tr>
 
+			<tr>
+				<td>Date Of Joining:</td>
+				<td><input type="date" th:field="*{dateOfJoining}" /></td>
+				<td th:class="errorClass" th:if="${#fields.hasErrors('dateOfJoining')}"
+					th:errors="*{dateOfJoining}">Date Of Joining Error</td>
+			</tr>
+			<tr>
+				<td>Business Unit:</td>
+				<td><select th:field="*{businessUnit}">
+						<option value="">--Please select BU--</option>
+						<option th:each="businessUnit : ${allBusinessUnits}"
+							th:value="${businessUnit}" th:text="${businessUnit}"></option>
+				</select></td>
+				<td th:class="errorClass" th:if="${#fields.hasErrors('businessUnit')}"
+					th:errors="*{businessUnit}">Business Unit error Error</td>
 
-			<form name="registration">
-				<label for="firstname">Name</label> <input type="text" id="ajax" name="name"
-					list="json-datalist" placeholder="NAME">
-				<datalist id="json-datalist"></datalist>
-				<br /> <br /> <!-- <label for="firstname">First Name</label> <input
-					type="text" name="firstname" id="firstname" placeholder="John" />
-				<br /> <br /> <label for="lastname">Last Name</label> <input
-					type="text" name="lastname" id="lastname" placeholder="Doe" /> <br />
-				<br /> --> <label for="email">Email</label> <input type="email"
-					name="email" id="email" placeholder="john@doe.com" /> <br /> <br />
-				<label for="password">Password</label> <input type="password"
-					name="password" id="password"
-					placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" /> <br /> <br />
-				<button type="submit">Register</button>
+			</tr>
 
-			</form>
-
-			<p>
-				<a id="signup" class="btn btn-success btn-lg">Sign up</a>
-			</p>
-		</div>
-
-	</div>
-
-	<footer th:replace='widget :: site-footer'></footer>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-
-
-	<script type="text/javascript" th:inline="javascript">
-		$(document)
-				.ready(
-						function() {
-							$("form[name='registration']")
-									.validate(
-											{
-												 onkeyup: function (element, event) {
-											            if (this.elementValue(element) === "") {
-											                return;
-											            } else {
-											                this.element(element);
-											            }
-											        },
-											        
-											        onfocusout: function(element) { $(element).valid(); },
-												// Specify validation rules
-												rules : {
-													// The key name on the left side is the name attribute
-													// of an input field. Validation rules are defined
-													// on the right side
-													name : "required",
-													email : {
-														required : true,
-														// Specify that email should be validated
-														// by the built-in "email" rule
-														email : true
-													},
-													password : {
-														required : true,
-														minlength : 5
-													}
-												},
-												// Specify validation error messages
-												messages : {
-													name : "Please enter your name",
-													password : {
-														required : "Please provide a password",
-														minlength : "Your password must be at least 5 characters long"
-													},
-													email : "Please enter a valid email address"
-												},
-												// Make sure the form is submitted to the destination defined
-												// in the "action" attribute of the form when valid
-												submitHandler : function(form) {
-													form.submit();
-												}
-											});
-
-							var jsonResponse;
-							var itemArray = new Array();
-							$.ajax({
-								type : 'GET',
-								url : 'http://localhost:8090/employee',
-								dataType : 'json',
-								success : function(data) {
-									jsonResponse = data;
-								}
-							});
-
-							/* drop down on keyup*/
-							$("input#ajax")
-									.on(
-											"keyup",
-											function(event) {
-												if (this.value.length == 3) {
-													var dataList = document
-															.getElementById('json-datalist');
-													$
-															.each(
-																	jsonResponse,
-																	function(
-																			index,
-																			element) {
-																		if (jQuery
-																				.inArray(
-																						element.name,
-																						itemArray) == -1) {
-																			// Create a new <option> element.
-																			var option = document
-																					.createElement('option');
-																			// Set the value using the item in the JSON array.
-																			itemArray
-																					.push(element.name);
-																			option.value = element.name;
-																			// Add the <option> element to the <datalist>.
-																			dataList
-																					.appendChild(option);
-
-																		}
-																	});
-												}
-											});
-
-						});
-	</script>
+			<tr>
+				<td><input type="checkbox" 
+					th:field="*{agreeTermsAndConditions}" /></td>
+				<td>I agree to the terms and conditions</td>
+				<td th:class="errorClass" th:if="${#fields.hasErrors('agreeTermsAndConditions')}"
+					th:errors="*{agreeTermsAndConditions}">Date Of Joining Error</td>
+			</tr>
+			<tr>
+				<td><button type="submit">Submit</button></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

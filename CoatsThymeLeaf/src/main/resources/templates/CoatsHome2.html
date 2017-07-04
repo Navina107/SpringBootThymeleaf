@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyme Leaf</title>
+<style th:inline="text">
+input::-webkit-calendar-picker-indicator {
+	display: none;
+}
+</style>
+</head>
+<body>
+
+	<header th:replace='widget :: site-header'></header>
+	<div class="container">
+		<div class="text-center">
+
+			<h1>Thymeleaf Layouts</h1>
+
+
+			<form>
+				<input type="text" id="ajax" list="json-datalist" placeholder="NAME">
+				<datalist id="json-datalist"></datalist>
+			</form>
+
+			<p>
+				<a id="signup" class="btn btn-success btn-lg">Sign up</a>
+			</p>
+		</div>
+
+	</div>
+
+	<footer th:replace='widget :: site-footer'></footer>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+		$(document).ready(function() {
+			var jsonResponse;
+			var itemArray = new Array();
+			$.ajax({
+				type : 'GET',
+				url : 'http://localhost:8090/employee',
+				dataType : 'json',
+				success : function(data) {
+					jsonResponse = data;
+				}
+			});
+
+			/* drop down on keyup*/
+			$("input#ajax").on("keyup", function(event) {
+				if (this.value.length == 3) {
+					var dataList = document.getElementById('json-datalist');
+					$.each(jsonResponse, function(index, element) {
+						if (jQuery.inArray(element.name, itemArray) == -1) {
+							// Create a new <option> element.
+							var option = document.createElement('option');
+							// Set the value using the item in the JSON array.
+							itemArray.push(element.name);
+							option.value = element.name;
+							// Add the <option> element to the <datalist>.
+							dataList.appendChild(option);
+							
+						}
+					});
+				}
+			});
+
+		});
+	</script>
+</body>
+</html>
