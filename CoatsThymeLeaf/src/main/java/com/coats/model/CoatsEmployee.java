@@ -19,9 +19,11 @@ public class CoatsEmployee {
 	@Size(min=2, max=30,message = "Please enter between {min} and {max} characters.")
 	@Pattern(regexp = "^[A-Za-z]*$*",message = "Invalid characters - Only alphabets allowed")
 	private String employeeName;
+	
 	@NotNull
-	@DateTimeFormat(pattern = "dd-mmm-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfJoining;
+	
 	@AssertTrue
 	private Boolean agreeTermsAndConditions;
 	private SkillSet[] skillSet;

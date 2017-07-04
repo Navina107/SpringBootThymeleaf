@@ -27,15 +27,16 @@ import com.coats.model.CoatsEmployee;
 @Controller
 public class HomeControllor {
 	
-	@InitBinder     
+	/*@InitBinder     
 	public void initBinder(WebDataBinder binder){
 	     binder.registerCustomEditor(       Date.class,     
 	                         new CustomDateEditor(new SimpleDateFormat("dd-mmm-yyyy"), true));   
-	}
+	}*/
 
 	
 	@RequestMapping("/")
 	public String view(CoatsEmployee coatsEmployee) {
+		coatsEmployee.setDateOfJoining(new Date());
 		return "CoatsHome";
 	}
 

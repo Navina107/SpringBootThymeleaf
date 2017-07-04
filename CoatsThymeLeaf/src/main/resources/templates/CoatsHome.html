@@ -30,7 +30,7 @@
 
 			<tr>
 				<td>Date Of Joining:</td>
-				<td><input type="date" th:field="*{dateOfJoining}" /></td>
+				<td><input type="date" th:field="*{dateOfJoining}" th:value="*{dateOfJoining}"/></td>
 				<td th:class="errorClass" th:if="${#fields.hasErrors('dateOfJoining')}"
 					th:errors="*{dateOfJoining}">Date Of Joining Error</td>
 			</tr>

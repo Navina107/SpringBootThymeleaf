@@ -12,7 +12,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = UniqueIDValidate.class)
 public @interface UniqueID {
-    String message() default "Enter valid id";
+    String message() default "{com.coats.config.message}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
