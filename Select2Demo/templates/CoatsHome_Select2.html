@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Select2</title>
+<link rel="stylesheet" type="text/css"
+	href="/static/css/select2.min.css" th:href="@{/css/select2.min.css}" />
+</head>
+<style th:inline="text">
+.select2-container
+{
+width:200px  !important;
+}
+</style>
+<body>
+
+	<label for="id_label_multiple"> Multiple select element <select
+		class="js-example-basic-multiple js-states form-control"
+		id="id_label_multiple" multiple="multiple"></select>
+	</label>
+	<br />
+	<br />
+	
+	<label for="id_label_ajax"> Multiple select from remote data
+	<select class="js-ajax-example js-states form-control"
+		id="id_label_multiple" multiple="multiple">
+	</select>
+	</label>
+	
+	<script src="/static/js/jquery-3.2.1.min.js"
+		th:src="@{/js/jquery-3.2.1.min.js}"></script>
+	<script src="/static/js/jquery-3.2.1.min.js"
+		th:src="@{/js/jquery-3.2.1.min.js}"></script>
+	<script src="/static/js/select2.full.min.js" th:src="@{/js/select2.full.min.js}"></script>
+	<script src="/static/js/select2Script.js"
+		th:src="@{/js/select2Script.js}"></script>
+</body>
+</html>
