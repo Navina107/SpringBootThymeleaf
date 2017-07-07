@@ -3,28 +3,65 @@
 <head>
 <title>Select2</title>
 <link rel="stylesheet" type="text/css"
-	href="../static/css/select2.min.css"/>
+	href="../static/css/select2.min.css" />
 </head>
 <style>
-.select2-container
-{
-width:200px  !important;
+h1 {
+	text-align: center;
+	color: deeppink;
+}
+
+.select2-container {
+	width: 200px !important;
+}
+
+label {
+	color: blue;
+	margin-left: 38px;
+}
+
+ul {
+	font-style: italic;
 }
 </style>
 <body>
-
-	<label for="id_label_multiple"> Multiple select element <select
+	<h1>SELECT2 DEMO</h1>
+	<ul>
+		<li>Below field is customized to match options only if the string
+			appears in the beginning of the suggestion. <br /> Custom matcher
+			uses a compatibility module that is only bundled in the full version
+			of Select2.<br />(By default the suggestion has values that contains
+			the letters typed).
+		</li>
+	</ul>
+	<label for="id_label_multiple"> Multiple select with
+		'startWith' string suggestion: <select
 		class="js-example-basic-multiple js-states form-control"
 		id="id_label_multiple" multiple="multiple"></select>
 	</label>
 	<br />
 	<br />
-	
-	<label for="id_label_ajax"> Multiple select from remote data
-	<select class="js-ajax-example js-states form-control"
-		id="id_label_multiple" multiple="multiple">
+	<ul>
+		<li>Below fields load suggestion from remote data source
+		<br/>
+		Url used to fetch remote Json data: <b>https://api.github.com/users/mralexgray/repos</b>
+		
+		</li>
+	</ul>
+	<label for="js-ajax-example"> Multiple select item-name from
+		remote data: <select class="js-ajax-example js-states form-control"
+		id="js-ajax-example" multiple="multiple">
 	</select>
 	</label>
+	<br />
+	<br />
+	<label for="js-ajax-remote-data"> Multiple select item-id from
+		remote data: <select
+		class="js-ajax-remote-data js-states form-control"
+		id="js-ajax-remote-data" multiple="multiple">
+	</select>
+	</label>
+
 	<script src="../static/js/jquery-3.2.1.min.js"></script>
 	<script src="../static/js/jquery-3.2.1.min.js"></script>
 	<script src="../static/js/select2.full.min.js"></script>
