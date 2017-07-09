@@ -7,6 +7,9 @@ DESCRIPTION        : Select2 gives you a customizable select box with support fo
                        
 IMPLEMENTATION     : The values for the select box is fetched from local and remote data source. Multi-value select box is enabled by                          setting multiple="multiple" in the select tag
 
+SELECT2 REFERENCE  : https://select2.github.io/examples.html
+
 NOTES              : A field is customized to match options only if the string appears in the beginning of the suggestion.Custom matcher 
                      uses a compatibility module that is only bundled in the full version of Select2.By default the select2 suggestion 
                      displays values that contains the letters typed.
+                   
