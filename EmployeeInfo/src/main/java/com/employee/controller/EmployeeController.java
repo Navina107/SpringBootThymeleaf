@@ -111,9 +111,9 @@ public class EmployeeController {
         return "hello";
     }
 
-    @RequestMapping(method = { RequestMethod.POST }, value = { "/baeldung" })
+   /* @RequestMapping(method = { RequestMethod.POST }, value = { "/baeldung" })
     public String sayHelloPost(HttpServletResponse response) {
         return "hello";
-    }
+    }*/
 
 }
